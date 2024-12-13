@@ -26,7 +26,7 @@ def get_posts():
     return posts
 
 
-def delete_post(post_id: int):
+def delete_post(post_id):
     delete_post_query = """
     DELETE FROM posts WHERE post_id = ?;
     """
@@ -39,7 +39,7 @@ def delete_post(post_id: int):
     return f"Удалено постов: {deleted_rows}"
 
 
-def get_post(post_id: int):
+def get_post(post_id):
     get_post_query = """
     SELECT * FROM posts WHERE post_id = ?;
     """
