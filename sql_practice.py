@@ -64,8 +64,10 @@ def update_post(post_id: int, new_title: str, new_content: str):
     return "Пост обновлен" if updated_rows > 0 else "Пост не найден"
 
 
-add_post("Заголвок", "Содержание")
-print(get_posts(1))
-print(get_post(10))
+add_post("Заголовок", "Содержание")
+print(get_posts())
+print(get_post(1))
 update_post(1, "Обновленный заголовок", "Обновленное содержание")
+print(get_post(1))
 delete_post(1)
+print(get_posts())
