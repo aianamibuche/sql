@@ -2,7 +2,7 @@ import sqlite3
 from config import DB_PATH
 
 
-def add_post(title: str, content: str):
+def add_post(title, content):
     add_post_query = """
     INSERT INTO posts(title, content) VALUES (?, ?);
     """
@@ -51,7 +51,7 @@ def get_post(post_id):
     return post
 
 
-def update_post(post_id: int, new_title: str, new_content: str):
+def update_post(post_id, new_title, new_content):
     update_post_query = """
     UPDATE posts SET title = ?, content = ? WHERE post_id = ?;
     """
