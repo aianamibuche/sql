@@ -14,43 +14,6 @@ def add_post(title, content):
     return "Пост добавлен"
 
 
-def get_posts():
-    get_posts_query = """
-    SELECT * FROM posts;
-    """
-    connection = sqlite3.connect(DB_PATH)
-    cursor = connection.cursor()
-    cursor.execute(get_posts_query)
-    posts = cursor.fetchall()
-    connection.close()
-    return posts
-
-
-def delete_post(post_id):
-    delete_post_query = """
-    DELETE FROM posts WHERE post_id = ?;
-    """
-    connection = sqlite3.connect(DB_PATH)
-    cursor = connection.cursor()
-    cursor.execute(delete_post_query, (post_id,))
-    connection.commit()
-    deleted_rows = cursor.rowcount
-    connection.close()
-    return f"Удалено постов: {deleted_rows}"
-
-
-def get_post(post_id):
-    get_post_query = """
-    SELECT * FROM posts WHERE post_id = ?;
-    """
-    connection = sqlite3.connect(DB_PATH)
-    cursor = connection.cursor()
-    cursor.execute(get_post_query, (post_id,))
-    post = cursor.fetchone()
-    connection.close()
-    return post
-
-
 def update_post(post_id, new_title, new_content):
     update_post_query = """
     UPDATE posts SET title = ?, content = ? WHERE post_id = ?;
@@ -65,9 +28,4 @@ def update_post(post_id, new_title, new_content):
 
 
 add_post("Заголовок", "Содержание")
-print(get_posts())
-print(get_post(2))
 update_post(1, "Обновленный заголовок", "Обновленное содержание")
-print(get_post(1))
-delete_post(1)
-print(get_posts())
